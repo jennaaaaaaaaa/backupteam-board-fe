@@ -1,0 +1,23 @@
+{
+  "name": "backupteam-board-fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js_fetch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennaaaaaaaaa/backupteam-board-fe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jennaaaaaaaaa/backupteam-board-fe/issues"
+  },
+  "homepage": "https://github.com/jennaaaaaaaaa/backupteam-board-fe#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2"
+  }
+}
