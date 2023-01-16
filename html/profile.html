@@ -21,16 +21,19 @@
 </html>
 <script>
     fetch("http://localhost:7001/profile",
-        { credentials: "include" }).then((response) => response.json()).then(user => {
-            for (let i = 0; i < users.rows.length; i++) {
+        { credentials: "include" }).then((response) => response.json())
+        .then(user => {
                 const row = `
-                <th style="border: 1px solid black">${users.rows[i].name}</th>
-                <th style="border: 1px solid black">${users.rows[i].email}</th>`
+                <th style="border: 1px solid black">${user.name}</th>
+                <th style="border: 1px solid black">${user.email}</th>`
 
                 const tr = document.createElement("tr")
                 tr.innerHTML = row
                 document.getElementById("user-table").appendChild(tr)
-            }
-
-        })
+    }) 
+        //.catch((error) => {
+        //     console.log(error)
+        //     alert('로그인을 하세요')
+        //     // location.href = "/"
+        // })
 </script>

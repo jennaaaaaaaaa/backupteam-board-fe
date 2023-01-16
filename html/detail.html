@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="board_write" id="post-table">
+        <div class="title">
+            <label style="display:inline-block; width: 100px;">제목 :</label>
+            <input type="text" placeholder="제목" id="title" name="title">
+        </div>
+        <div class="cont">
+            <textarea placeholder="내용을 입력해주세요." name="content" id="contents"></textarea>
+        </div>
+    </div>
+
+    
+</body>
+</html>
+
+<script>
+    const id = window.location.href
+    console.log(id)
+    fetch(`http://localhost:7001/articles/${id}`,
+        { credentials: "include" }).then((response) => response.json())
+        .then((post) => {
+            const row = `<label style="display:inline-block; width: 100px;">${post.title}:</label>`
+
+            const div = document.createElement("div")
+            div.innerHTML = row
+            document.getElementById("post-table").appendChild(tr)
+        }
+    ) 
+</script>

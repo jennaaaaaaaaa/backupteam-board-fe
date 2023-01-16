@@ -25,6 +25,10 @@ app.get('/login', (req,res) => {
     res.sendFile(__dirname + '/html/login.html')
 })
 
+app.get('/detail', (req,res) => {
+    res.sendFile(__dirname + '/html/detail.html')
+})
+
 app.listen(9001, () => {
     console.log('9001 server start')
 })
