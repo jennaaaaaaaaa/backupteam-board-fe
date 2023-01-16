@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>게시글 작성</h1>
+    <form action='/post' method="post" id="article_post">
+        <div class="board_write">
+            <div class="title">
+                <label style="display:inline-block; width: 100px;">제목 :</label>
+                <input type="text" placeholder="제목" id="title" name="title">
+            </div>
+            <div class="cont">
+                <textarea placeholder="내용을 입력해주세요." name="content" id="contents"></textarea>
+            </div>
+        </div>
+
+        <div class="bt_wrap">
+            <button id="submit-button" type="submit">작성하기</button>
+        </div>
+    </form>
+
+</body>
+
+</html>
+<script>
+    document.getElementById("article_post").addEventListener("submit", (event) => {
+        event.preventDefault()
+
+        const data = {
+            title: document.getElementById('title').value,
+            contents: document.getElementById('contents').value
+        }
+
+        fetch("http://localhost:7001/articles", {
+            method: "POST",
+            credentials: "include", //
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).then((response) => response.json())
+            .then((data) => {
+                location.href = "/"
+            }).catch((error) => {
+                console.log(error)
+                alert("너 계정없어")
+            })
+
+    })
+</script>

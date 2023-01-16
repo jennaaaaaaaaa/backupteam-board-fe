@@ -12,30 +12,25 @@
     <h1>내 정보 페이지</h1>
     <table style="border: 1px solid black; width: 100%" id="user-table">
         <tr>
-            <th style="border: 1px solid black">ID</th>
             <th style="border: 1px solid black">이름</th>
             <th style="border: 1px solid black">이메일</th>
-            <th style="border: 1px solid black">PW</th>
         </tr>
     </table>
 </body>
 
 </html>
 <script>
-    fetch("http://localhost:7001/profile", {credentials: "include"}).then((response) => response.json()).then(user => {
+    fetch("http://localhost:7001/profile",
+        { credentials: "include" }).then((response) => response.json()).then(user => {
+            for (let i = 0; i < users.rows.length; i++) {
+                const row = `
+                <th style="border: 1px solid black">${users.rows[i].name}</th>
+                <th style="border: 1px solid black">${users.rows[i].email}</th>`
 
+                const tr = document.createElement("tr")
+                tr.innerHTML = row
+                document.getElementById("user-table").appendChild(tr)
+            }
 
-        const row = 
-        `
-            <td style="border: 1px solid black">${user.id}</td>
-            <td style="border: 1px solid black">${user.name}</td>
-            <td style="border: 1px solid black">${user.email}</td>
-            <td style="border: 1px solid black">${user.password}</td>
-        `
-
-        const tr = document.createElement("tr")
-        tr.innerHTML = row
-        document.getElementById("user-table").appendChild(tr)
-
-    })
+        })
 </script>
