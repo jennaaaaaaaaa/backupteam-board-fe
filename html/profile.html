@@ -31,9 +31,9 @@
                 tr.innerHTML = row
                 document.getElementById("user-table").appendChild(tr)
     }) 
-        //.catch((error) => {
-        //     console.log(error)
-        //     alert('로그인을 하세요')
-        //     // location.href = "/"
-        // })
+        .catch((error) => {
+            console.log(error)
+            alert('로그인을 하세요')
+            location.href = "/login"
+        })
 </script>

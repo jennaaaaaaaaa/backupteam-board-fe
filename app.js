@@ -25,7 +25,11 @@ app.get('/login', (req,res) => {
     res.sendFile(__dirname + '/html/login.html')
 })
 
-app.get('/detail', (req,res) => {
+app.get('/articles/:id', (req,res) => {
+    res.sendFile(__dirname + '/html/modify.html')
+})
+
+app.get('/articles/:id', (req,res) => {
     res.sendFile(__dirname + '/html/detail.html')
 })
 

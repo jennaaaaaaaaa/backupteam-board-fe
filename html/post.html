@@ -8,24 +8,28 @@
     <title>Document</title>
 </head>
 
+<style>
+</style>
+
 <body>
     <h1>게시글 작성</h1>
     <form action='/post' method="post" id="article_post">
         <div class="board_write">
             <div class="title">
-                <label style="display:inline-block; width: 100px;">제목 :</label>
+                <label style="display:inline-block; width: 100px; margin-bottom: 10px;">제목 :</label>
                 <input type="text" placeholder="제목" id="title" name="title">
             </div>
             <div class="cont">
-                <textarea placeholder="내용을 입력해주세요." name="content" id="contents"></textarea>
+                
+                <textarea placeholder="내용을 입력해주세요." name="content" id="contents" style="margin-left: 105px; width: 200px; height: 200px;"></textarea>
             </div>
         </div>
 
         <div class="bt_wrap">
             <button id="submit-button" type="submit">작성하기</button>
+            <button><a href="/" style="text-decoration-line: none;">취소</a></button>
         </div>
     </form>
-
 </body>
 
 </html>
@@ -38,6 +42,8 @@
             contents: document.getElementById('contents').value
         }
 
+        console.log(data.message)
+
         fetch("http://localhost:7001/articles", {
             method: "POST",
             credentials: "include", //
@@ -47,7 +53,9 @@
             body: JSON.stringify(data)
         }).then((response) => response.json())
             .then((data) => {
-                location.href = "/"
+                alert(data)
+                alert("작성이 완료되었습니다")
+                // location.href = "/"
             }).catch((error) => {
                 console.log(error)
                 alert("너 계정없어")
