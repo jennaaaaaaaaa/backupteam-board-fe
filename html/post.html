@@ -42,8 +42,6 @@
             contents: document.getElementById('contents').value
         }
 
-        console.log(data.message)
-
         fetch("http://localhost:7001/articles", {
             method: "POST",
             credentials: "include", //
@@ -53,9 +51,9 @@
             body: JSON.stringify(data)
         }).then((response) => response.json())
             .then((data) => {
-                alert(data)
+                // alert(data)
                 alert("작성이 완료되었습니다")
-                // location.href = "/"
+                location.href = "/"
             }).catch((error) => {
                 console.log(error)
                 alert("너 계정없어")
