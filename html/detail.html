@@ -7,47 +7,40 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <h1>게시글</h1>
-    <form action='/detail/:id' method="get" id="article_post">
-        <div class="board_write">
-            <div class="title">
-                <label style="display:inline-block; width: 100px; margin-bottom: 10px;">제목 :</label>
-                <input type="text" placeholder="제목" id="title" name="title">
-            </div>
-            <div class="cont">
-                <textarea placeholder="내용을 입력해주세요." name="content" id="contents" style="margin-left: 105px; width: 200px; height: 200px;"></textarea>
-            </div>
-        </div>
 
-        <div class="bt_wrap">
-            <button id="submit-button" type="submit">수정하기</button>
-            <button><a href="/" style="text-decoration-line: none;">삭제하기</a></button>
-        </div>
-    </form> -->
+    <table style="border: 1px solid black; width: 100%" id="detail-table">
 
-    <table id="contents-table">
     </table>
+    <div class="bt_wrap">
+        <button id="submit-button" type="submit">수정하기</button>
+        <button><a href="/" style="text-decoration-line: none;">삭제하기</a></button>
+    </div>
+
+
+    
 
     
 </body>
 </html>
 
 <script>
-    const id = window.location.pathname.split("/")[2]
-  fetch(`http://localhost:7001/articles/${id}`, {credentials: "include"}).then(response => response.json()).then((post) => {
+const id = window.location.pathname.slice(8)
+
+fetch(`http://localhost:7001/${id}`, {credentials: "include"}).then(response => response.json()).then((post) => {
     const row = `
-    <th style="border: 1px solid black;">${post.title}</th>` 
+        <th style="border: 1px solid black;">${post.title}</th>` 
 
     const tr = document.createElement("tr")
     tr.innerHTML = row
-    document.getElementById("contents-table").appendChild(tr)
+    document.getElementById("detail-table").appendChild(tr)
   })
 
-  fetch(`http://localhost:5000/articles/${id}`, {credentials: "include"}).then(response => response.json()).then((post) => {
+  fetch(`http://localhost:7001/${id}`, {credentials: "include"}).then(response => response.json()).then((post) => {
     const row = `<td style="border: 1px solid black;">${post.contents}</td>` 
 
     const tr = document.createElement("tr")
     tr.innerHTML = row
-    document.getElementById("contents-table").appendChild(tr)
+    document.getElementById("detail-table").appendChild(tr)
   })
+   
 </script>

@@ -29,7 +29,7 @@ app.get('/articles/:id', (req,res) => {
     res.sendFile(__dirname + '/html/modify.html')
 })
 
-app.get('/articles/:id', (req,res) => {
+app.get('/detail/:id', (req,res) => {
     res.sendFile(__dirname + '/html/detail.html')
 })
 
