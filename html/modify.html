@@ -43,19 +43,18 @@
 
     fetch(`http://localhost:7001/${id}`, {
         method: "patch",
-        credentials: "include", //
+        credentials: "include",
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
     }).then((response) => response.json())
         .then((data) => {
-            // alert(data)
             alert("작성이 완료되었습니다")
             location.href = "/"
         }).catch((error) => {
             console.log(error)
-            alert("너 계정없어")
+            alert("로그인 하세요")
         })
 
     })
